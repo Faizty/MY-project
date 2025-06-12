@@ -1,0 +1,519 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 150 30% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 150 30% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 150 30% 10%;
+    --primary: 145 50% 25%;
+    --primary-foreground: 144 40% 98%;
+    --secondary: 145 30% 96%;
+    --secondary-foreground: 145 50% 25%;
+    --muted: 145 30% 96%;
+    --muted-foreground: 145 20% 40%;
+    --accent: 145 30% 96%;
+    --accent-foreground: 145 50% 25%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 145 20% 90%;
+    --input: 145 20% 90%;
+    --ring: 145 50% 25%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 150 30% 5%;
+    --foreground: 0 0% 98%;
+    --card: 150 30% 7%;
+    --card-foreground: 0 0% 98%;
+    --popover: 150 30% 7%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 145 50% 40%;
+    --primary-foreground: 144 40% 98%;
+    --secondary: 150 30% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 150 30% 15%;
+    --muted-foreground: 145 20% 70%;
+    --accent: 150 30% 15%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 150 30% 20%;
+    --input: 150 30% 20%;
+    --ring: 145 50% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-normal;
+  }
+  p,
+  span,
+  a,
+  li,
+  input,
+  textarea,
+  select,
+  button {
+    @apply font-normal;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-medium;
+  }
+  strong,
+  b {
+    @apply font-medium;
+  }
+}
+
+/* Custom styles */
+.product-card {
+  @apply transition-all duration-300 hover:shadow-lg;
+}
+
+.product-card:hover .product-card-actions {
+  @apply opacity-100;
+}
+
+.product-card-actions {
+  @apply opacity-0 transition-opacity duration-300;
+}
+
+.hero-slider .swiper-pagination-bullet {
+  @apply bg-white/70 opacity-70;
+}
+
+.hero-slider .swiper-pagination-bullet-active {
+  @apply bg-white opacity-100;
+}
+
+.hero-slider .swiper-button-next,
+.hero-slider .swiper-button-prev {
+  @apply text-white;
+}
+
+.wishlist-heart {
+  @apply transition-all duration-300;
+}
+
+.wishlist-heart.active {
+  @apply text-red-500 fill-red-500;
+}
+
+.notification-dot {
+  @apply absolute -right-1 -top-1 h-3 w-3 rounded-full bg-red-500;
+}
+
+/* Detailed product page styles */
+.product-gallery .swiper-slide {
+  @apply overflow-hidden rounded-lg border;
+}
+
+.product-gallery .swiper-pagination-bullet {
+  @apply bg-primary opacity-70;
+}
+
+.product-gallery .swiper-pagination-bullet-active {
+  @apply opacity-100;
+}
+
+.product-thumbs .swiper-slide {
+  @apply cursor-pointer overflow-hidden rounded-md border opacity-60 transition-opacity;
+}
+
+.product-thumbs .swiper-slide-thumb-active {
+  @apply border-primary opacity-100;
+}
+
+/* Seller dashboard styles */
+.dashboard-stat-card {
+  @apply transition-all duration-300 hover:shadow-md hover:ring-1 hover:ring-primary/20;
+}
+
+/* Profile page styles */
+.profile-avatar-upload:hover .profile-avatar-overlay {
+  @apply opacity-100;
+}
+
+.profile-avatar-overlay {
+  @apply absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300;
+}
+
+/* Image zoom styles */
+.product-image-zoom {
+  @apply cursor-zoom-in overflow-hidden;
+}
+
+.product-image-zoom.zoomed {
+  @apply cursor-zoom-out;
+}
+
+.product-image-zoom img {
+  @apply transition-transform duration-300;
+}
+
+.product-image-zoom.zoomed img {
+  @apply scale-150;
+}
+
+/* 360 view styles */
+.product-360-view {
+  @apply relative cursor-grab;
+}
+
+.product-360-view:active {
+  @apply cursor-grabbing;
+}
+
+.product-360-view-indicator {
+  @apply absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 text-white text-xs py-1 px-3 rounded-full;
+}
+
+/* Search history styles */
+.search-history-item {
+  @apply flex items-center justify-between p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md cursor-pointer;
+}
+
+.search-history-clear {
+  @apply text-xs text-red-500 hover:text-red-700 dark:hover:text-red-400;
+}
+
+/* Add these additional dark mode styles */
+.dark .product-card {
+  @apply bg-gray-800 border-gray-700;
+}
+
+.dark .search-history-item:hover {
+  @apply bg-gray-800;
+}
+
+/* Fix image visibility in dark mode */
+.dark img {
+  @apply brightness-90;
+}
+
+/* Ensure proper contrast for text in dark mode */
+.dark .text-gray-600 {
+  @apply text-gray-300;
+}
+
+.dark .text-gray-500 {
+  @apply text-gray-400;
+}
+
+.dark .text-gray-700 {
+  @apply text-gray-200;
+}
+
+.dark .text-gray-800 {
+  @apply text-gray-100;
+}
+
+/* Fix border colors in dark mode */
+.dark .border {
+  @apply border-gray-700;
+}
+
+/* Fix background colors in dark mode */
+.dark .bg-white {
+  @apply bg-gray-800;
+}
+
+.dark .bg-gray-50 {
+  @apply bg-gray-800;
+}
+
+.dark .bg-gray-100 {
+  @apply bg-gray-700;
+}
+
+/* Fix hover states in dark mode */
+.dark .hover\:bg-gray-100:hover {
+  @apply hover:bg-gray-700;
+}
+
+.dark .hover\:bg-gray-50:hover {
+  @apply hover:bg-gray-800;
+}
+
+/* Fix shadows in dark mode */
+.dark .shadow-md,
+.dark .shadow-sm,
+.dark .shadow-lg {
+  @apply shadow-gray-900/50;
+}
+
+/* Add these styles at the end of the file to ensure proper dialog positioning and backdrop */
+
+/* Dialog styles */
+.DialogOverlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  inset: 0;
+  animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 40;
+}
+
+.DialogContent {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 95vw;
+  max-width: 64rem;
+  max-height: 95vh;
+  overflow: auto;
+  z-index: 50;
+  animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark .DialogContent {
+  background-color: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+}
+
+@keyframes overlayShow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes contentShow {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Add this to your globals.css file */
+
+/* Tab indicator styles */
+.tabs-list {
+  position: relative;
+  display: flex;
+  border-bottom: 1px solid var(--border);
+}
+
+.tabs-trigger {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.tabs-trigger[data-state="active"] {
+  color: var(--foreground);
+}
+
+.tabs-trigger[data-state="active"]::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--primary);
+}
+
+.dark .tabs-trigger[data-state="active"]::after {
+  background-color: var(--primary);
+}
+
+/* Fix for TabsList in shadcn/ui */
+[role="tablist"] {
+  position: relative;
+}
+
+[role="tablist"] [role="tab"][data-state="active"] {
+  color: var(--foreground);
+  border-bottom-color: var(--primary);
+}
+
+[role="tablist"] [role="tab"]::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: transparent;
+  transition: background-color 0.2s ease;
+}
+
+[role="tablist"] [role="tab"][data-state="active"]::after {
+  background-color: var(--primary);
+}
+
+.dark [role="tablist"] [role="tab"][data-state="active"]::after {
+  background-color: var(--primary);
+}
+
+/* Dropdown menu positioning fix */
+.dropdown-menu-content {
+  position: absolute;
+  z-index: 50;
+  min-width: 8rem;
+  overflow: hidden;
+  background-color: var(--background);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+[data-radix-popper-content-wrapper] {
+  z-index: 50;
+}
+
+/* Toast positioning and styling fixes - FORCE OVERRIDE */
+[data-radix-toast-viewport] {
+  position: fixed !important;
+  top: 1rem !important;
+  right: 1rem !important;
+  z-index: 9999 !important;
+  max-width: 280px !important;
+  width: 280px !important;
+  display: flex !important;
+  flex-direction: column-reverse !important;
+  gap: 0.5rem !important;
+  pointer-events: none !important;
+}
+
+[data-radix-toast-root] {
+  max-width: 280px !important;
+  width: 280px !important;
+  padding: 0.75rem 1rem !important;
+  border-radius: 0.5rem !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+  background-color: white !important;
+  border: 1px solid #e5e7eb !important;
+  pointer-events: auto !important;
+  position: relative !important;
+  transform: translateX(0) !important;
+}
+
+.dark [data-radix-toast-root] {
+  background-color: #1f2937 !important;
+  border-color: #374151 !important;
+  color: #f9fafb !important;
+}
+
+[data-radix-toast-title] {
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  margin-bottom: 0.25rem !important;
+  color: inherit !important;
+}
+
+[data-radix-toast-description] {
+  font-size: 0.8125rem !important;
+  opacity: 0.8 !important;
+  color: inherit !important;
+}
+
+[data-radix-toast-close] {
+  position: absolute !important;
+  top: 0.5rem !important;
+  right: 0.5rem !important;
+  width: 1rem !important;
+  height: 1rem !important;
+  opacity: 0.7 !important;
+}
+
+/* Ensure toast animations work properly */
+@keyframes toast-slide-in-right {
+  from {
+    transform: translateX(calc(100% + 1rem)) !important;
+    opacity: 0 !important;
+  }
+  to {
+    transform: translateX(0) !important;
+    opacity: 1 !important;
+  }
+}
+
+@keyframes toast-slide-out-right {
+  from {
+    transform: translateX(0) !important;
+    opacity: 1 !important;
+  }
+  to {
+    transform: translateX(calc(100% + 1rem)) !important;
+    opacity: 0 !important;
+  }
+}
+
+[data-radix-toast-root][data-state="open"] {
+  animation: toast-slide-in-right 200ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+[data-radix-toast-root][data-state="closed"] {
+  animation: toast-slide-out-right 150ms ease-in !important;
+}
+
+/* Mobile responsive toast */
+@media (max-width: 640px) {
+  [data-radix-toast-viewport] {
+    top: 1rem !important;
+    right: 1rem !important;
+    left: 1rem !important;
+    max-width: none !important;
+    width: calc(100% - 2rem) !important;
+  }
+
+  [data-radix-toast-root] {
+    max-width: none !important;
+    width: 100% !important;
+  }
+}
+
+/* Additional fallback styles for toast container */
+.toast-container,
+.Toaster,
+[data-sonner-toaster] {
+  position: fixed !important;
+  top: 1rem !important;
+  right: 1rem !important;
+  z-index: 9999 !important;
+  max-width: 280px !important;
+}
+
+/* Override any conflicting toast styles */
+.toast,
+[role="alert"][data-radix-toast-root] {
+  max-width: 280px !important;
+  width: 280px !important;
+  margin-bottom: 0.5rem !important;
+}
